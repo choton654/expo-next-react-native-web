@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "_internal": {
+      "isDebug": false,
+      "projectRoot": "E:\\Projects\\react-native\\expo-web-next\\next-expo",
+      "dynamicConfigPath": null,
+      "staticConfigPath": null,
+      "packageJsonPath": "E:\\Projects\\react-native\\expo-web-next\\next-expo\\package.json"
+    },
+    "name": "next-expo",
+    "slug": "next-expo",
+    "version": "0.1.0",
+    "sdkVersion": "40.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.choton.nextexpo"
+    }
+  }
+}
