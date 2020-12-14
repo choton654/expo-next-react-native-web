@@ -1,67 +1,66 @@
 // @generated: @expo/next-adapter@2.1.52
-// import React from "react";
-// import { StyleSheet, Text, View } from "react-native";
 
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>Welcome to Expo + Next.js hello !!!</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-//   text: {
-//     fontSize: 16,
-//   },
-// });
-
-// In App.js in a new project
-
-import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerActions, NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Link } from "expo-next-react-navigation";
-import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Button } from "react-native";
+import AuthScreen from "../components/Auth";
+import HomeScreen from "../components/Home";
 import Profile from "./Profile";
-
-export function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Home Screen 🥳</Text>
-      <Link style={{ color: "green", fontSize: 20 }} routeName="Profile">
-        Click me to open profile :)
-      </Link>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontSize: 20,
-    margin: 20,
-  },
-});
-
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={Profile} />
-      </Stack.Navigator>
+    <NavigationContainer independent>
+      <Drawer.Navigator>
+        <Drawer.Screen
+          name="Auth"
+          component={() => (
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Auth"
+                component={AuthScreen}
+                options={({ navigation }) => ({
+                  headerLeft: () => (
+                    <Button
+                      title="toggle"
+                      onPress={() => {
+                        navigation.dispatch(DrawerActions.toggleDrawer);
+                      }}
+                    />
+                  ),
+                })}
+              />
+            </Stack.Navigator>
+          )}
+        />
+        <Drawer.Screen
+          name="Home"
+          component={() => (
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={({ navigation }) => ({
+                  headerLeft: () => (
+                    <Button
+                      title="toggle"
+                      onPress={() => {
+                        navigation.dispatch(DrawerActions.toggleDrawer);
+                      }}
+                    />
+                  ),
+                })}
+              />
+              <Stack.Screen name="Profile" component={Profile} />
+            </Stack.Navigator>
+          )}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
