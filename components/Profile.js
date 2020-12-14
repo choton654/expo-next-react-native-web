@@ -1,6 +1,7 @@
+import { CommonActions } from "@react-navigation/native";
 import { useRouting } from "expo-next-react-navigation";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Platform } from "react-native";
 
 function Button({ text, onPress }) {
   return (
@@ -19,15 +20,22 @@ function Button({ text, onPress }) {
   );
 }
 
-function Profile() {
-  const { goBack, getParam } = useRouting();
+function Profile({ navigation }) {
+  const { goBack, getParam, navigate } = useRouting();
 
-  const id = getParam("id");
-  console.log(id);
+  // const id = getParam("id");
+  // console.log(id);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Profile! 🏋️‍♀️</Text>
-      <Button text="👈 Go back" onPress={() => goBack()} />
+      <Button
+        text="👈 Go back"
+        onPress={() => {
+          // navigation.dispatch(CommonActions.goBack());
+          navigation.navigate("Home");
+          // goBack();
+        }}
+      />
     </View>
   );
 }

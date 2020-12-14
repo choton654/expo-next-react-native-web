@@ -1,14 +1,26 @@
 import { Link, useRouting } from "expo-next-react-navigation";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
+  const { goBack, navigate } = useRouting();
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen 🥳</Text>
-      <Link style={{ color: "green", fontSize: 20 }} routeName="Profile">
-        Click me to open profile :)
+      <Link style={{ color: "green", fontSize: 20 }} routeName="user">
+        Click me to open user :)
       </Link>
+      <Button
+        title="Main"
+        onPress={() => {
+          // goBack();
+          navigation.navigate("Main");
+          // navigate({
+          //   routeName: "Main",
+          // });
+        }}
+      />
     </View>
   );
 }

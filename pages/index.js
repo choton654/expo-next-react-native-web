@@ -8,7 +8,10 @@ import React from "react";
 import { Button } from "react-native";
 import AuthScreen from "../components/Auth";
 import HomeScreen from "../components/Home";
-import Profile from "./Profile";
+import Profile from "../components/Profile";
+import Main from "../components/Main";
+import post from "./post";
+import user from "./user";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,6 +60,9 @@ function App() {
                 })}
               />
               <Stack.Screen name="Profile" component={Profile} />
+              <Stack.Screen name="Main" component={Main} />
+              <Stack.Screen name="user" component={user} />
+              <Stack.Screen name="post" component={post} />
             </Stack.Navigator>
           )}
         />

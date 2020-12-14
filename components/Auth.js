@@ -6,17 +6,17 @@ const AuthScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Auth Screen</Text>
-      <Link style={{ color: "green", fontSize: 20 }} routeName="Main">
-        Click me to open main :)
+      <Link style={{ color: "green", fontSize: 20 }} routeName="post">
+        Click me to open post :)
       </Link>
       <Button
         title="Profile"
         onPress={() => {
-          // navigation.navigate("Profile");
-          navigate({
-            routeName: "Profile",
-            params: { id: "chris" },
-          });
+          navigation.navigate("Home", { screen: "Profile" });
+          // navigate({
+          //   routeName: "Profile",
+          //   params: { id: "chris" },
+          // });
         }}
       />
     </View>
