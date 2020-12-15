@@ -26,10 +26,10 @@ function Main({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.text}>Main! 🏋️‍♀️</Text>
       <Button
-        title="Auth"
+        title="Home"
         onPress={() => {
           // goBack();
-          navigation.navigate("Home", { screen: "user" });
+          navigation.navigate("Home");
           // navigate({
           //   routeName: "user",
           // });

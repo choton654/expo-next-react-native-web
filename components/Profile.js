@@ -1,8 +1,9 @@
-import { CommonActions } from "@react-navigation/native";
+import { CommonActions, useLinkTo } from "@react-navigation/native";
 import { useRouting } from "expo-next-react-navigation";
 import React from "react";
 import { StyleSheet, Text, View, Platform } from "react-native";
-
+import { StackActions } from "@react-navigation/native";
+import router from "next/router";
 function Button({ text, onPress }) {
   return (
     <Text
@@ -22,7 +23,7 @@ function Button({ text, onPress }) {
 
 function Profile({ navigation }) {
   const { goBack, getParam, navigate } = useRouting();
-
+  const linkTo = useLinkTo();
   // const id = getParam("id");
   // console.log(id);
   return (
@@ -31,9 +32,10 @@ function Profile({ navigation }) {
       <Button
         text="👈 Go back"
         onPress={() => {
-          // navigation.dispatch(CommonActions.goBack());
-          navigation.navigate("Home");
-          // goBack();
+          // linkTo("/auth")
+          navigation.dispatch(CommonActions.goBack());
+
+          // navigation.navigate("Auth");
         }}
       />
     </View>
@@ -53,3 +55,8 @@ const styles = StyleSheet.create({
     margin: 20,
   },
 });
+
+// navigation.dispatch(StackActions.popToTop());
+// navigation.dispatch(CommonActions.goBack());
+// goBack();
+// router.push("/Auth/auth");

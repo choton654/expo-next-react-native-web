@@ -1,24 +1,26 @@
 import { useRouting } from "expo-next-react-navigation";
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import router from "next/router";
-const post = ({ navigation }) => {
-  const { goBack, navigate, push } = useRouting();
 
+const User = ({ navigation }) => {
+  const { goBack, navigate } = useRouting();
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Post</Text>
+      <Text>User</Text>
       <Button
-        title="Auth"
+        title="post"
         onPress={() => {
-          // goBack();
-          router.push("/");
+          navigation.navigate("Post");
+
+          // navigate({
+          //   routeName: "post",
+          // });
         }}
       />
     </View>
   );
 };
 
-export default post;
+export default User;
 
 const styles = StyleSheet.create({});
